@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
     private float verticalRotationSpeed = 240f; // 수직 회전 속도
 
     // 내부 변수들
-    public bool isFirstPerson = true;      // 1인칭 모드인지 여부
+    public bool isFirstPerson = false;      // 1인칭 모드인지 여부
     //private bool isGrounded;                // 플레이어가 땅에 있는지 여부
     private Rigidbody rb;                   // 플레이어의 Rigidbody
 
