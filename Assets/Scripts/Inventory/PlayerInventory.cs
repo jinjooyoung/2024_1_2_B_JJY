@@ -10,6 +10,37 @@ public class PlayerInventory : MonoBehaviour
     public int bushCount = 0;
     public int treeCount = 0;
 
+    SurvivalStats survivalStats;
+
+    public void Start()
+    {
+        survivalStats = GetComponent<SurvivalStats>();
+    }
+
+    public void UseItem(ItemType itemType)
+    {
+        if (GetItemCount(itemType) <= 0)
+        {
+            return;
+        }
+
+        switch (itemType)
+        {
+            case ItemType.VegetableStew:
+                RemoveItem(ItemType.VegetableStew, 1);
+                survivalStats.EatFood(RecipeList.KitchenRecipes[0].hungerRestoreAmount);
+                break;
+            case ItemType.FruitSalad:
+                RemoveItem(ItemType.FruitSalad, 1);
+                survivalStats.EatFood(RecipeList.KitchenRecipes[1].hungerRestoreAmount);
+                break;
+            case ItemType.RepairKit:
+                RemoveItem(ItemType.RepairKit, 1);
+                survivalStats.RepairSuit(RecipeList.WorkbenchRecipes[0].hungerRestoreAmount);
+                break;
+        }
+    }
+
     // ¿©·¯ ¾ÆÀÌÅÛÀ» ÇÑ²¨¹ø¿¡ È¹µæ
     public void AddItem(ItemType itemType, int amount)
     {
